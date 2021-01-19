@@ -9,9 +9,11 @@ services:
     ports:
       - 9870:9870
       - 9000:9000
+      - 50070:50070
+      - 50075:50075
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
-      - /Users/greenr/Desktop:/workspace
+      - /Users/greenr/Documents/Teaching/Shells/CS_6500_Big_Data_Analytics/Reflections/01_HDFS/Solution:/Workspace
     environment:
       - CLUSTER_NAME=test
     env_file:
