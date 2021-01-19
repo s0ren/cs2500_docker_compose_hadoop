@@ -1,8 +1,12 @@
 FROM debian:9
 
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
-MAINTAINER Giannis Mouchakis <gmouchakis@iit.demokritos.gr>
+# # MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+# # MAINTAINER Giannis Mouchakis <gmouchakis@iit.demokritos.gr>
 
+LABEL maintainer="Robert C. Green II <greenr@bgsu.edu>"
+
+# RUN apt-get update && apt-get install -y python3 python3-pip && rm -rf /var/lib/apt/lists/*
+# RUN pip3 install hdfs
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       openjdk-8-jdk \
       net-tools \
@@ -10,8 +14,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       netcat \
       gnupg \
       libsnappy-dev \
+      python3 \
+      python3-setuptools \
+      python3-pip \
     && rm -rf /var/lib/apt/lists/*
       
+RUN pip3 install -U hdfs
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
