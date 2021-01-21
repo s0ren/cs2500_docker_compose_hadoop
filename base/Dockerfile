@@ -19,7 +19,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       python3-pip \
     && rm -rf /var/lib/apt/lists/*
       
-RUN pip3 install -U hdfs
+RUN pip3 install -U hdfs mrjob
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
