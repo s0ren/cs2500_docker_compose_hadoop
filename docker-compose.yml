@@ -9,8 +9,8 @@ services:
     ports:
       - 9870:9870
       - 9000:9000
-      - 50070:50070
-      - 50075:50075
+      # - 50070:50070
+      # - 50075:50075
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
       # Example for mounting an external directory as a volume
@@ -29,6 +29,7 @@ services:
       - hadoop_datanode:/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
+      # SERVICE_PRECONDITION: "namenode:50070"
     env_file:
       - ./hadoop.env
   

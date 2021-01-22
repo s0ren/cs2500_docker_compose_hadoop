@@ -13,11 +13,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
       curl \
       netcat \
       gnupg \
-      libsnappy-dev \
-      python3 \
-      python3-setuptools \
-      python3-pip \
-    && rm -rf /var/lib/apt/lists/*
+      libsnappy-dev 
+RUN apt-get install -y python3 python3-setuptools python3-pip 
+    # && rm -rf /var/lib/apt/lists/*
       
 RUN pip3 install -U hdfs mrjob
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
