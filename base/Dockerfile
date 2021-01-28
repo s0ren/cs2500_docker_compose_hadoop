@@ -1,8 +1,5 @@
 FROM debian:9
 
-# # MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
-# # MAINTAINER Giannis Mouchakis <gmouchakis@iit.demokritos.gr>
-
 LABEL maintainer="Robert C. Green II <greenr@bgsu.edu>"
 
 # RUN apt-get update && apt-get install -y python3 python3-pip && rm -rf /var/lib/apt/lists/*
