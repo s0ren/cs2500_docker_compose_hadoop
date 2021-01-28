@@ -9,12 +9,10 @@ services:
     ports:
       - 9870:9870
       - 9000:9000
-      # - 50070:50070
-      # - 50075:50075
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
       # Example for mounting an external directory as a volume
-      # - /Users/greenr/Documents/Teaching/Shells/CS_6500_Big_Data_Analytics/Reflections/01_HDFS/Solution:/Workspace
+      - /Users/greenr/Documents/Development/Docker/docker-hadoop/Data:/Workspace
     environment:
       - CLUSTER_NAME=test
     env_file:
@@ -40,6 +38,9 @@ services:
     restart: always
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    ports:
+      - 8032:8032
+      - 8088:8088
     env_file:
       - ./hadoop.env
 
