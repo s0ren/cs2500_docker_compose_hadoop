@@ -1,6 +1,7 @@
 from mrjob.job import MRJob
 
 # Running using HDFS & Hadoop: python3.5 wordCount.py -r hadoop hdfs:///Data/Words.txt
+# NOTE the extra / in the path for the HDFS file
 class MRWordFrequencyCount(MRJob):
 
     def mapper(self, _, line):
