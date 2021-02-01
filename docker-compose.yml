@@ -27,6 +27,8 @@ services:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
       - ./hadoop.env
+    ports:
+      - 9864:9864
   
   resourcemanager:
     image: rgreen13/hadoop-resourcemanager
