@@ -11,7 +11,7 @@ services:
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
       # Example for mounting an external directory as a volume
-      # - /Users/greenr/Documents/Development/Docker/docker-hadoop/Data:/Workspace
+      - ./:/Workspace
     environment:
       - CLUSTER_NAME=test
     env_file:
