@@ -2,6 +2,14 @@
 
 Below you will find examples of running various types of MapReduce commands using a variety of methods. All methods are based on Python.
 
+## Install a virtual environment, HDFS, and mrjob
+
+```
+python -m venv venv
+chmod +x venv/bin/activate
+python -m pip install hdfs mrjob
+```
+
 ## Run a basic, command line MapReduce operation in Python:
 ``` echo "foo foo foo moo moo moo" | ./Code/mapper.py | sort | ./Code/reducer.py ```
 
@@ -21,10 +29,10 @@ Additional documentation can be found at http://hadoop.apache.org/docs/current/h
 
 ## Run MapReduce operations using mrjob:
 
-```python3.5 wordCount.py < [LOCAL_INPUT]```
+```python wordCount.py < [LOCAL_INPUT]```
 
 ## Run MapReduce operations using mrjob and HDFS:
 
-```python3.5 wordCount.py -r hadoop < [HDFS_INPUT]```
+```python wordCount.py -r hadoop < [HDFS_INPUT]```
 
 Information, examples, and explations found at https://mrjob.readthedocs.io/en/latest/guides/quickstart.html
