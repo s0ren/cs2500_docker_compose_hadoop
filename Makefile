@@ -2,14 +2,30 @@ DOCKER_NETWORK = docker-hadoop_default
 ENV_FILE = hadoop.env
 current_branch := $(shell git rev-parse --abbrev-ref HEAD)
 build:
-	docker build -t bde2020/hadoop-base:$(current_branch) ./base
-	docker build -t bde2020/hadoop-namenode:$(current_branch) ./namenode
-	docker build -t bde2020/hadoop-datanode:$(current_branch) ./datanode
-	docker build -t bde2020/hadoop-resourcemanager:$(current_branch) ./resourcemanager
-	docker build -t bde2020/hadoop-nodemanager:$(current_branch) ./nodemanager
-	docker build -t bde2020/hadoop-historyserver:$(current_branch) ./historyserver
-	docker build -t bde2020/hadoop-submit:$(current_branch) ./submit
+	docker build -t rgreen13/hadoop-base ./base
+	docker build -t rgreen13/hadoop-namenode ./namenode
+	docker build -t rgreen13/hadoop-datanode ./datanode
+	docker build -t rgreen13/hadoop-resourcemanager ./resourcemanager
+	docker build -t rgreen13/hadoop-nodemanager ./nodemanager
+	docker build -t rgreen13/hadoop-historyserver ./historyserver
+	# docker build -t rgreen13/hadoop-submit:$(current_branch) ./submit
 
+pull:
+	docker pull rgreen13/hadoop-base
+	docker pull rgreen13/hadoop-namenode
+	docker pull rgreen13/hadoop-datanode 
+	docker pull rgreen13/hadoop-resourcemanager
+	docker pull rgreen13/hadoop-nodemanager
+	docker pull rgreen13/hadoop-historyserver
+
+push:
+	docker push rgreen13/hadoop-base
+	docker push rgreen13/hadoop-namenode
+	docker push rgreen13/hadoop-datanode 
+	docker push rgreen13/hadoop-resourcemanager
+	docker push rgreen13/hadoop-nodemanager
+	docker push rgreen13/hadoop-historyserver
+	
 wordcount:
 	docker build -t hadoop-wordcount ./submit
 	docker run --network ${DOCKER_NETWORK} --env-file ${ENV_FILE} bde2020/hadoop-base:$(current_branch) hdfs dfs -mkdir -p /input/
