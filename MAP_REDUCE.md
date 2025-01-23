@@ -5,9 +5,10 @@ Below you will find examples of running various types of MapReduce commands usin
 ## Install a virtual environment, HDFS, and mrjob
 
 ```
-python -m venv venv
+python3 -m venv venv
 chmod +x venv/bin/activate
-python -m pip install hdfs mrjob
+source venv/bin/activate
+/python -m pip install hdfs mrjob
 ```
 
 ## Run a basic, command line MapReduce operation in Python:
@@ -23,7 +24,7 @@ or
 
 or
 
-```hadoop jar /opt/hadoop-3.2.1/share/hadoop/tools/lib/hadoop-streaming-3.2.1.jar -files /Workspace/Code/mapper.py,/Workspace/Code/reducer.py -mapper mapper.py -reducer reducer.py -input INPUT -output OUTPUT```
+```hadoop jar /opt/hadoop-3.4.1/share/hadoop/tools/lib/hadoop-streaming-3.4.1.jar -files /Workspace/Code/mapper.py,/Workspace/Code/reducer.py -mapper mapper.py -reducer reducer.py -input INPUT -output OUTPUT```
 
 Additional documentation can be found at http://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html 
 
