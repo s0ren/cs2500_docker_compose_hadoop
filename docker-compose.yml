@@ -1,6 +1,25 @@
 version: "3"
 
 services:
+  dev:
+    build: 
+      context: ./devcontainer
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870"
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+      - datanode
+      - datanode2
+      - resourcemanager
+    tty: true        
+    stdin_open: true 
+    command: sleep infinity  
+
   namenode:
     image: rgreen13/hadoop-namenode
     container_name: namenode
