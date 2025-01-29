@@ -29,13 +29,38 @@ services:
       - ./hadoop.env
     ports:
       - 9864:9864
+
+  datanode2:
+    image: rgreen13/hadoop-datanode
+    container_name: datanode2
+    restart: always
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+    ports:
+      - 9865:9864
+
+    
+  # datanode2:
+  #   build: ./datanode
+  #   container_name: datanode2
+  #   depends_on:
+  #     - namenode
+  #   volumes:
+  #     - hadoop_datanode2:/hadoop/dfs/data
+  #   env_file:
+  #     - ./hadoop.env
+  
   
   resourcemanager:
     image: rgreen13/hadoop-resourcemanager
     container_name: resourcemanager
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 datanode2:9864 "
     ports:
       - 8032:8032
       - 8088:8088
@@ -47,7 +72,7 @@ services:
     container_name: nodemanager
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 datanode2:9864 resourcemanager:8088"
     env_file:
       - ./hadoop.env
   
@@ -56,7 +81,7 @@ services:
     container_name: historyserver
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 datanode2:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
@@ -65,4 +90,5 @@ services:
 volumes:
   hadoop_namenode:
   hadoop_datanode:
+  hadoop_datanode2:
   hadoop_historyserver:
