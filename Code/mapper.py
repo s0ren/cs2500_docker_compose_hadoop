@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.5
+#!/usr/bin/env python3
 
 # From http://www.quuxlabs.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/
 # Updated for Python 3+ 
